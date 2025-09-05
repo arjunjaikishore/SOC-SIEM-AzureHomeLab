@@ -1,4 +1,4 @@
-<h1>Security Operations Center (SOC) and SIEM Home Lab</h1>
+<h1>🛡️ Security Operations Center (SOC) Home Lab</h1>
 
 
 <h2>Description</h2>
