@@ -21,14 +21,14 @@ This SOC Simulation Home Lab was my attempt on getting hands-on experience with 
 
 <h2>Simulation walk-through:</h2>
 
-**Created Azure Resources** - Set up a Resource Group and Virtual Network in Microsoft Azure.
+**1. Created Azure Resources** - Set up a Resource Group and Virtual Network in Microsoft Azure.
 <br />
 <br />
 <img src="https://i.imgur.com/cDr5rOy.png" height="80%" width="80%" alt="SOC Simulation Steps"/>
 <br />
 <br />
 <br />
-**Deployed Windows VM** - Launched a Windows 10 virtual machine, configured credentials, and enabled RDP access via a Network Security Group (port 3389).
+**2. Deployed Windows VM** - Launched a Windows 10 virtual machine, configured credentials, and enabled RDP access via a Network Security Group (port 3389).
 <br />
 <br />
 <img src="https://i.imgur.com/yUVm7us.png" height="80%" width="80%" alt="SOC Simulation Steps"/>
@@ -36,28 +36,28 @@ This SOC Simulation Home Lab was my attempt on getting hands-on experience with 
 <br />
 <br />
 <br />
-**Connected Logs to Azure Monitor** - Installed/activated the Azure Monitor agent and linked the VM to a Log Analytics Workspace.
+**3. Connected Logs to Azure Monitor** - Installed/activated the Azure Monitor agent and linked the VM to a Log Analytics Workspace.
 <br/>
 <br/>
 <img src="https://i.imgur.com/x6VWD9S.png" height="80%" width="80%" alt="SOC Simulation Steps"/>
 <br />
 <br />
 <br/>
-**Enabled Microsoft Sentinel** – Using Microsoft Defender, activated Sentinel on the workspace to provide SIEM functionality.
+**4. Enabled Microsoft Sentinel** – Using Microsoft Defender, activated Sentinel on the workspace to provide SIEM functionality.
 <br/>
 <br/>
 <img src="https://i.imgur.com/7NRt8qF.png" height="80%" width="80%" alt="SOC Simulation Steps"/>
 <br />
 <br />
 <br/>
-**Configured Data Collection** - Forwarded Windows Security Event Logs (failed/successful logins, account activity) into Log Analytics.
+**5. Configured Data Collection** - Forwarded Windows Security Event Logs (failed/successful logins, account activity) into Log Analytics.
 <br/>
 <br/>
 <img src="https://i.imgur.com/SEfTAqy.png" height="80%" width="80%" alt="SOC Simulation Steps"/>
 <br />
 <br/>
 <br />
-**Exposed the VM** - Left RDP open to the internet for several hours to attract real brute-force login attempts.
+**6. Exposed the VM** - Left RDP open to the internet for several hours to attract real brute-force login attempts.
 <br/>
 <br/>
 <img src="https://www.kaspersky.com/content/en-global/images/repository/isc/2022/what-is-hacking-2.jpg" height="80%" width="80%" alt="SOC Simulation Steps"/>
@@ -71,21 +71,21 @@ This SOC Simulation Home Lab was my attempt on getting hands-on experience with 
 <br />
 <br/>
 <br />
-**Investigated with KQL** – Queried the log data using Kusto Query Language to dig deeper into failed logins, attacker IPs, and timelines.
+**7. Investigated with KQL** – Queried the log data using Kusto Query Language to dig deeper into failed logins, attacker IPs, and timelines.
 <br/>
 <br/>
 <img src="https://i.imgur.com/B3S7It9.png" height="80%" width="80%" alt="SOC Simulation Steps"/>
 <br />
 <br/>
 <br />
-**Geographic Mapping** – Used Sentinel’s built-in map feature to visualize attacker IP addresses by country/region.
+**8. Geographic Mapping** – Used Sentinel’s built-in map feature to visualize attacker IP addresses by country/region.
 <br/>
 <br/>
 <img src="https://i.imgur.com/FwMWWei.png" height="80%" width="80%" alt="SOC Simulation Steps"/>
 <br />
 <br />
 <br/>
-**Validated End-to-End Workflow** – Confirmed that log collection, alerting, visualization, and investigation worked together like a real SIEM environment.
+**9. Validated End-to-End Workflow** – Confirmed that log collection, alerting, visualization, and investigation worked together like a real SIEM environment.
 <br />
 <br />
 <img src="https://miro.medium.com/1*vM9RLvlyYG-GZ-QORZalOg.jpeg" height="80%" width="80%" alt="SOC Simulation Steps"/>
