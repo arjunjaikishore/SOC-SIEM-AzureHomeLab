@@ -1,89 +1,108 @@
 <h1>🛡️ Security Operations Center (SOC) Home Lab</h1>
 
-
-<h2>Description</h2>
-For this project, I exploited the Kioptrix Level 1 vulnerable VM using Kali Linux. I started with pre-engagement steps like confirming my IP with ifconfig and scanning the network with Nmap to find live hosts and fingerprint the operating system. From there, I ran a full port scan and focused on services running on ports like 22, 80, 111, 139, 443, and 32768. After identifying versions of these services, I used Nessus to help confirm possible vulnerabilities and zeroed in on Samba. I researched known Samba exploits with Searchsploit, set up the right Metasploit module and payload, and was able to successfully gain root access. This project walked me through the full penetration testing workflow—recon, scanning, enumeration, exploitation, and post-exploitation—while giving me hands-on practice with tools like Nmap, Nessus, and Metasploit.
+<h2><br />Description</h2>
+This SOC Simulation Home Lab was my attempt on getting hands-on experience with SOC and SIEM workflows in the cloud. I deployed a Windows VM in Microsoft Azure, configured log forwarding into Log Analytics, and enabled Microsoft Sentinel for monitoring and alerting. To generate real-world data, I exposed the VM to the internet for several hours and allowed brute-force login attempts to occur. I configured Sentinel to not only detect and alert on these attempts, but also plot the attacker IP addresses on a world map, giving me visibility into where the activity was originating globally. I then used KQL queries to investigate the events further, which helped me practice log analysis, detection engineering, and incident response techniques.
 <br />
 
 
 <h2>Languages and Utilities Used</h2>
 
-- <b>Bash</b> 
-- <b>Kali Linux</b>
-- <b>VMware</b>
+- KQL (Kusto Query Language)
+- Microsoft Sentinel (SIEM platform)
+- Azure Log Analytics Workspace
+- Windows Event Viewer
+- Remote Desktop Protocol
 
 <h2>Environments Used </h2>
 
-- <b>Linux</b>
-- <b>Windows 11</b>
+- Microsoft Azure
+- Windows 10 (Virtual Machine)
+- Windows 11 (Local Machine)
 
-<h2>Exploitation walk-through:</h2>
+<h2>Simulation walk-through:</h2>
 
-<p align="center">
-Confirm local IP Configuration using “ifconfig” <br/>
+**Created Azure Resources** - Set up a Resource Group and Virtual Network in Microsoft Azure.
+<br />
+<br />
 <img src="https://i.imgur.com/jo9LTdf.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <br />
 <br />
-Discover live hosts on the network using “nmap -sn”  <br/>
+<br />
+**Deployed Windows VM** - Launched a Windows 10 virtual machine, configured credentials, and enabled RDP access via a Network Security Group (port 3389).
+<br />
+<br />
 <img src="https://i.imgur.com/zeV8Tme.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <br />
 <br />
-Finding out what operating system Kioptrix is using “nmap -o” (it's using 2.4.9 - 2.4.18) <br/>
+<br />
+**Connected Logs to Azure Monitor** - Installed/activated the Azure Monitor agent and linked the VM to a Log Analytics Workspace.
+<br/>
+<br/>
 <img src="https://i.imgur.com/wokRp3w.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <br />
 <br />
-Performed a full port scan using “nmap -p- -sV”  <br/>
+<br/>
+**Enabled Microsoft Sentinel** – Activated Sentinel on the workspace to provide SIEM functionality.
+<br/>
+<br/>
 <img src="https://i.imgur.com/RHffboX.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <br />
 <br />
-Focus scan on known open ports (not the full 6553 ports) using “nmap -p 22,80,111,139,443,32768  -sV -sC  192.168.244.131”  <br/>
+<br/>
+**Configured Data Collection** - Forwarded Windows Security Event Logs (failed/successful logins, account activity) into Log Analytics.
+<br/>
+<br/>
 <img src="https://i.imgur.com/PpziEU7.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <br />
+<br/>
 <br />
-Installing Nessus on Kali Linux  <br/>
+**Exposed the VM** - Left RDP open to the internet for several hours to attract real brute-force login attempts.
+<br/>
+<br/>
 <img src="https://i.imgur.com/6wSWfh5.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <img src="https://i.imgur.com/J4OgDpB.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <br />
+<br/>
 <br />
-Results from Nessus Scan  <br/>
+**Generated and Collected Attack Data** - Allowed unsolicited login attempts to accumulate, producing authentic attack traffic.
+<br/>
+<br/>
 <img src="https://i.imgur.com/DU4K6DD.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <img src="https://i.imgur.com/9D4Xiqe.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <img src="https://i.imgur.com/Oajigt0.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <img src="https://i.imgur.com/eFMNBq1.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <br />
+<br/>
 <br />
-Searching up Kioptrix port 443  <br/>
+**Detection in Sentinel** – Verified that Sentinel fired security alerts based on the failed logins and suspicious authentication patterns.
+<br/>
+<br/>
 <img src="https://i.imgur.com/c4GeLdF.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <br />
+<br/>
 <br />
-Identified port 80 and port 443 as possible vulnerabilities “nmap -sn”  <br/>
+**Geographic Mapping** – Used Sentinel’s built-in map feature to visualize attacker IP addresses by country/region.
+<br/>
+<br/>
 <img src="https://i.imgur.com/Fl6hbAs.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <br />
 <br />
-Utilizing Metaspoit tool  <br/>
+<br/>
+**Investigated with KQL** – Queried the log data using Kusto Query Language to dig deeper into failed logins, attacker IPs, and timelines.
+<br/>
+<br/>
 <img src="https://i.imgur.com/A7gGSwi.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <br />
+<br/>
 <br />
-Utilizing Auxiliary Scanner  <br/>
+**Validated End-to-End Workflow** – Confirmed that log collection, alerting, visualization, and investigation worked together like a real SIEM environment.
+<br/>
+<br/>
 <img src="https://i.imgur.com/EoR0b5h.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <img src="https://i.imgur.com/ZIjjwQy.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
 <br />
 <br />
-Using Searchsploit tool to for Samba 2 exploits  <br/>
-<img src="https://i.imgur.com/kWm6M0e.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
-<br />
-<br />
-Getting the correct exploit command from Rapid7.   <br/>
-<img src="https://i.imgur.com/JBuhxWN.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
-<br />
-<br />
-Configure correct payload to exploit  <br/>
-<img src="https://i.imgur.com/tFSIfQg.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
-<br />
-<br />
-Gained root access to Kioptrix  <br/>
-<img src="https://i.imgur.com/42V2JHC.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
-<img src="https://i.imgur.com/hTTW84N.png" height="80%" width="80%" alt="Kioptrix Exploitation Steps"/>
+<br/>
 <br />
 <br />
 </p>
