@@ -64,28 +64,28 @@ This SOC Simulation Home Lab was my attempt on getting hands-on experience with 
 <br />
 <br/>
 <br />
-**Generated and Collected Attack Data** - Allowed unsolicited login attempts to accumulate, producing authentic attack traffic.
+**7. Generated and Collected Attack Data** - Allowed unsolicited login attempts to accumulate, producing authentic attack traffic.
 <br/>
 <br/>
 <img src="https://i.imgur.com/AY11y4d.png" height="80%" width="80%" alt="SOC Simulation Steps"/>
 <br />
 <br/>
 <br />
-**7. Investigated with KQL** – Queried the log data using Kusto Query Language to dig deeper into failed logins, attacker IPs, and timelines.
+**8. Investigated with KQL** – Queried the log data using Kusto Query Language to dig deeper into failed logins, attacker IPs, and timelines.
 <br/>
 <br/>
 <img src="https://i.imgur.com/B3S7It9.png" height="80%" width="80%" alt="SOC Simulation Steps"/>
 <br />
 <br/>
 <br />
-**8. Geographic Mapping** – Used Sentinel’s built-in map feature to visualize attacker IP addresses by country/region.
+**9. Geographic Mapping** – Used Sentinel’s built-in map feature to visualize attacker IP addresses by country/region.
 <br/>
 <br/>
 <img src="https://i.imgur.com/FwMWWei.png" height="80%" width="80%" alt="SOC Simulation Steps"/>
 <br />
 <br />
 <br/>
-**9. Validated End-to-End Workflow** – Confirmed that log collection, alerting, visualization, and investigation worked together like a real SIEM environment.
+**10. Validated End-to-End Workflow** – Confirmed that log collection, alerting, visualization, and investigation worked together like a real SIEM environment.
 <br />
 <br />
 <img src="https://miro.medium.com/1*vM9RLvlyYG-GZ-QORZalOg.jpeg" height="80%" width="80%" alt="SOC Simulation Steps"/>
