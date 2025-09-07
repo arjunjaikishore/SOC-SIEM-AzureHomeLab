@@ -1,7 +1,7 @@
 <h1>🛡️ Security Operations Center (SOC) Home Lab</h1>
 
 <h2><br />Description</h2>
-This SOC Simulation Home Lab was my attempt on getting hands-on experience with SOC and SIEM workflows in the cloud. I deployed a vulnerable Windows VM in Microsoft Azure, configured log forwarding into Log Analytics, and enabled Microsoft Sentinel for monitoring and alerting. To generate real-world data, I exposed the VM to the internet for several hours and allowed brute-force login attempts to occur. I configured Sentinel to not only detect and alert on these attempts, but also plot the attacker IP address locations on a world map, giving me visibility into where the activity was originating globally. I then used KQL queries to investigate the events further, which helped me practice log analysis, detection engineering, and incident response techniques.
+This SOC Simulation Home Lab was my attempt on getting hands-on experience with SOC and SIEM workflows in the cloud. I deployed a vulnerable Windows VM in Microsoft Azure, configured log forwarding into Log Analytics, and enabled Microsoft Sentinel for monitoring and alerting. To generate real-world data, I exposed the VM to the internet for several hours and allowed brute-force login attempts to occur. I configured Sentinel to not only detect and alert on these attempts, but also plot the attacker IP address locations on a world map, giving me visibility into where the activity was originating globally. I also used KQL queries to investigate the events, which helped me practice log analysis, detection engineering, and incident response techniques.
 <br />
 
 
